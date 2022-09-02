@@ -1,0 +1,66 @@
+.pokemon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  height: 260px;
+  border: 1px solid gray;
+  border-radius: 15px;
+  position: relative;
+}
+.type-container {
+  display: flex;
+}
+.type-container * {
+  border: 1px solid;
+  border-radius: 9px;
+  padding: 2px 5px;
+  margin-left: 5px;
+}
+.pokemon-card img {
+  height: 180px;
+  width: 180px;
+}
+.card-name {
+  margin: 0 0 15px;
+}
+.btn {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  position: absolute;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  cursor: pointer;
+}
+.left {
+  left: 0;
+  top: 80px
+}
+.right {
+  right: 0;
+  top: 80px;
+}
+.btn svg {
+  height: 35px;
+  width: 35px;
+  display: block;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+}
+.grass {
+  background-color: rgba(90, 224, 0, 0.7);
+  border: 1px solid green;
+}
+.poison {
+  background-color: rgba(57, 143, 0, 0.7);
+  border: 1px solid rgb(0, 187, 0);
+}
+.fire {
+  background-color: rgba(247, 58, 0, 0.7);
+  border: 1px solid rgb(187, 0, 0);
+}
+.water {
+  background-color: rgba(61, 61, 223, 0.7);
+}
