@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { ReactComponent as Leftsvg } from '../../images/bxs-left-arrow.svg'
 import { ReactComponent as Rightsvg } from '../../images/bxs-right-arrow.svg'
 import { Link } from 'react-router-dom'
-import { generatePath } from 'react-router-dom'
 
 export default function PokemonCard({ photo, name, types = [] }) {
   const [currentImage, setCurrentImage] = useState(0)
