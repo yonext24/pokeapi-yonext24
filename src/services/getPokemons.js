@@ -4,6 +4,6 @@ export const getPokemons = async (url = 'https://pokeapi.co/api/v2/pokemon') => 
     const result = await data.json()
     return result
   } catch(err) {
-
+    return null
   }
 }

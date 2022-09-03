@@ -23,7 +23,7 @@ export default function PageOfPokemons () {
     {
       pokemons.map((pokemon) => {
         const sprites = [pokemon.sprites.front_default, pokemon.sprites.back_default]
-        return <PokemonCard photo={sprites} name={pokemon.name} types={pokemon.types}/>
+        return <PokemonCard key={pokemon.name} photo={sprites} name={pokemon.name} types={pokemon.types}/>
       })
     }
   </div>

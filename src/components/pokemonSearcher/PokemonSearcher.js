@@ -7,7 +7,6 @@ export default function PokemonSearcher () {
   let navigate = useNavigate()
 
   const handleChange = e => {
-    console.log(e.target.value)
     setKeyword(e.target.value)
   }
   const handleSubmit = e => {
