@@ -1,0 +1,25 @@
+.btn {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  position: absolute;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  cursor: pointer;
+}
+.left {
+  left: 0;
+  top: 50%
+}
+.right {
+  right: 0;
+  top: 50%;
+}
+.btn svg {
+  height: 35px;
+  width: 35px;
+  display: block;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+}
