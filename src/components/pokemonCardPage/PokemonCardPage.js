@@ -86,7 +86,6 @@ export default function PokemonCardPage({ sprites, name }) {
   name = name.charAt(0).toUpperCase() + name.slice(1)
 
 
-  adfs
 
   return (
     <div className='pokemoncard-container'>
