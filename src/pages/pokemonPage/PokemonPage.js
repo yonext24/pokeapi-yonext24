@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { getPokemons } from '../../services/getPokemons'
 import { useEffect, useState } from 'react'
 import PokemonCardPage from '../../components/pokemonCardPage/PokemonCardPage'
+import './pokemonPage.css'
 
 export default function PokemonPage () {
   const [pokemonData, setPokemonData] = useState(null)
@@ -15,15 +16,11 @@ export default function PokemonPage () {
   if (pokemonData === null || pokemonData.ok === false) {
     return null
   }
-  
   const { sprites, types, name } = pokemonData
-  
 
   return (
-  <div>
-    <h2>{name}</h2>
-    <img alt='pokemon' src={sprites.front_default}  />
-    <PokemonCardPage sprites={sprites} />
+  <div className='page-container'>
+    <PokemonCardPage sprites={sprites} name={name}/>
   </div>
   )
 }
