@@ -3,11 +3,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import fondopokemon from '../../images/fondopokemon.jfif'
 
-
-export default function PokemonImage({ photo_oficial, height, weight, name }) {
-  name = name.charAt(0).toUpperCase() + name.slice(1)
-
-  const opacityAnimation = keyframes`
+const opacityAnimation = keyframes`
     from {
       opacity: 0;
       transform: translateY(20%);
@@ -37,7 +33,7 @@ export default function PokemonImage({ photo_oficial, height, weight, name }) {
       font-size: 2.3rem;
     `
 
-  const PokemonImage = styled.img`
+  const PokemonImg = styled.img`
       width: 50%;
       height: 50%;
     `
@@ -64,6 +60,7 @@ export default function PokemonImage({ photo_oficial, height, weight, name }) {
   justify-content: center;
   align-items: center;
   animation: ${opacityAnimation} .5s;
+  animation-delay: .1s;
   `
   const PhotoContainer = styled.div`
       min-height: 500px;
@@ -101,16 +98,15 @@ export default function PokemonImage({ photo_oficial, height, weight, name }) {
       z-index: -1;
       `
   const PokemonHeightDiv = styled.div`
-      height: calc(0% + ${(height * 200) / 100}px);
+      height: calc(0% + ${props => (props.height * 200) / 100}px);
       border-left: 3px solid white;
       position: absolute;
       bottom: 0;
       left: -3px;
       animation: ${heightAnimation} .3s;
     `
-  console.log(weight)
   const PokemonWeightDiv = styled.div`
-      width: ${weight / 10 < 600 ? weight / 10 : 600}px;
+      width: ${props => props.weight / 10 < 600 ? props.weight / 10 : 600}px;
       border-bottom: 3px solid white;
       position: absolute;
       bottom: 5px;
@@ -135,20 +131,23 @@ export default function PokemonImage({ photo_oficial, height, weight, name }) {
     `
 
 
+export default function PokemonImage({ photo_oficial, height, weight, name }) {
+  name = name.charAt(0).toUpperCase() + name.slice(1)
+
   return <>
     <PhotoContainer>
       <PokemonName>{name}</PokemonName>
       <PhotoAnimation>
-        <PokemonImage src={photo_oficial} />
+        <PokemonImg src={photo_oficial} />
       </PhotoAnimation>
-      <PokemonHeightFullDiv >
-        <PokemonHeightDiv>
+      <PokemonHeightFullDiv>
+        <PokemonHeightDiv height={height}>
           <Height>{height / 10} Metros</Height>
         </PokemonHeightDiv>
       </PokemonHeightFullDiv>
       <PokemonFullWeightDiv />
-      {weight / 10 > 600 ? <PokemonWeightPlus ><Weight>{weight / 10}k</Weight></PokemonWeightPlus> : null}
-      <PokemonWeightDiv>
+      {weight / 10 > 600 ? <PokemonWeightPlus><Weight>{weight / 10}k</Weight></PokemonWeightPlus> : null}
+      <PokemonWeightDiv weight={weight}>
         {weight / 10 < 600 ? <Weight>{weight}k</Weight> : null}
       </PokemonWeightDiv>
     </PhotoContainer>

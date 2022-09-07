@@ -67,7 +67,6 @@ export default function PokemonCardPage({ sprites }) {
 
   }
   const spritesFinal = imagesOrderer();
-  console.log(spritesFinal)
   const currentGame = Object.keys(spritesFinal)[game]
 
   const images = Object.entries(spritesFinal[currentGame]).map(element => {
@@ -92,7 +91,7 @@ export default function PokemonCardPage({ sprites }) {
         {
           images.map(type => {
             return (
-              <div className="photo">
+              <div className="photo" key={type[image][0][0]}>
                 <img alt="pokemon" src={type[image][0][1]}></img>
                 <Buttons state={image} setState={setImage} list={type[image][0]} />
               </div>

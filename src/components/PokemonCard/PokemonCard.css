@@ -12,6 +12,13 @@
 .type-container {
   display: flex;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: underline;
+}
 .type-container * {
   border: 1px solid;
   border-radius: 9px;
