@@ -61,14 +61,13 @@ export default function PokemonCardPage({ sprites }) {
           orderedSprites[game][name].push({ [normalName]: sprite[normalName] })
           orderedSprites[game][name].push({ [finalName]: backSprite })
         }
-
       })
     })
     return orderedSprites
 
   }
   const spritesFinal = imagesOrderer();
-
+  console.log(spritesFinal)
   const currentGame = Object.keys(spritesFinal)[game]
 
   const images = Object.entries(spritesFinal[currentGame]).map(element => {
@@ -82,7 +81,6 @@ export default function PokemonCardPage({ sprites }) {
   .replace('_', ' ')
   .replace('-', ' ')
   title = title.charAt(0).toUpperCase() + title.slice(1)
-
 
   return (
     <div className='pokemoncard-container'>
