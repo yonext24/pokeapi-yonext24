@@ -1,6 +1,7 @@
 import './pokemonImage.css'
 import React from 'react'
 import styled from 'styled-components'
+import fondopokemon from '../../images/fondopokemon.jfif'
 
 
 export default function PokemonImage ({ photo_oficial, height, weight, name }) {
@@ -46,7 +47,7 @@ export default function PokemonImage ({ photo_oficial, height, weight, name }) {
       
       &::after {
         content: '';
-        background-image: url('http://localhost:3000/static/media/fondopokemon.07231b161176a31b24cc.jfif');
+        background-image: url(${fondopokemon});
         background-size: cover, contain;
         position: absolute;
         width: -webkit-fill-available;
