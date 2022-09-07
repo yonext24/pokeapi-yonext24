@@ -22,8 +22,8 @@ export default function PageOfPokemons () {
   return <div className="container">
     {
       pokemons.map((pokemon) => {
-        const sprites = [pokemon.sprites.front_default, pokemon.sprites.back_default]
-        return <PokemonCard key={pokemon.name} photo={sprites} name={pokemon.name} types={pokemon.types}/>
+        const {'official-artwork' : sprite} = pokemon.sprites.other
+        return <PokemonCard key={pokemon.name} photo={sprite.front_default} name={pokemon.name} types={pokemon.types}/>
       })
     }
   </div>
