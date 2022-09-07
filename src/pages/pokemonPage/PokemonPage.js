@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import PokemonCardPage from '../../components/pokemonCardPage/PokemonCardPage'
 import './pokemonPage.css'
 import PokemonImage from '../../components/pokemonImage/PokemonImage'
+import Error404 from '../error404/Error404'
 
 // Agregar línea de peso y de altura
 // Agregar un map de base stats con imagenes como "hp", attack(espada) etc
@@ -20,9 +21,12 @@ export default function PokemonPage () {
     .then(res => setPokemonData(res))
   }, [pokemon]) 
 
+
   if (pokemonData === null || pokemonData.ok === false) {
     return null
   }
+  if (pokemonData === false) return <Error404 />
+  
   const { sprites, name, height, weight } = pokemonData
   const { 'official-artwork' : photo_oficial } = sprites.other
   const { front_default } = photo_oficial

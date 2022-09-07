@@ -5,11 +5,13 @@ import PokemonPage from './pages/pokemonPage/PokemonPage.js';
 import Error404 from './pages/error404/Error404';
 import PokemonSearcher from './components/pokemonSearcher/PokemonSearcher.js';
 import React from 'react';
+import NavBar from './components/navbar/NavBar';
 
 function App() {
   return (
     <div className="App">
         <Router>
+          <NavBar />
           <PokemonSearcher />
           <Routes>
             <Route exact path='/pokemons/:pokemon' element={<PokemonPage />} />
