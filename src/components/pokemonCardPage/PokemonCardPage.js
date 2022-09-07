@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Buttons from "../buttons/Buttons";
 import "./pokemonCardPage.css"
 
-export default function PokemonCardPage({ sprites, name }) {
+export default function PokemonCardPage({ sprites }) {
   const [game, setGame] = useState(0)
   const [image, setImage] = useState(0)
-  const [shinyImage, setShinyImage] = useState(0)
+
+  useEffect(() => {
+    setGame(0)
+    setImage(0)
+  }, [sprites])
 
   const hasShiny = sprites.front_shiny ? true : false
   const shinyPhotos = hasShiny ? [{ front_shiny: sprites.front_shiny }, { back_shiny: sprites.back_shiny }] : []
@@ -13,7 +17,7 @@ export default function PokemonCardPage({ sprites, name }) {
 
   console.log()
 
-  function imagesGetter() {
+  function imagesOrderer() {
     const { versions } = sprites
     const games = Object.entries(versions).map(gen => {
       return gen[1]
@@ -40,7 +44,6 @@ export default function PokemonCardPage({ sprites, name }) {
         objectOfFrontSprites[game[0]].push({ [sprite[0]]: sprite[1] })
       })
     })
-
     let orderedSprites = { 'Change Game': { 'default': defaultPhotos, shiny: shinyPhotos } }
 
     Object.entries(objectOfFrontSprites).forEach(element => {
@@ -61,12 +64,10 @@ export default function PokemonCardPage({ sprites, name }) {
 
       })
     })
-    orderedSprites['1st'] = { 'default': defaultPhotos, shiny: shinyPhotos }
-
     return orderedSprites
 
   }
-  const spritesFinal = imagesGetter();
+  const spritesFinal = imagesOrderer();
 
   const currentGame = Object.keys(spritesFinal)[game]
 
@@ -77,22 +78,17 @@ export default function PokemonCardPage({ sprites, name }) {
     })
     return x
   })
-  console.log(name)
-  console.log(spritesFinal[currentGame])
   let title = currentGame
   .replace('_', ' ')
   .replace('-', ' ')
   title = title.charAt(0).toUpperCase() + title.slice(1)
-  name = name.charAt(0).toUpperCase() + name.slice(1)
-
 
 
   return (
     <div className='pokemoncard-container'>
-      <h1>{name}</h1>
       <div className="game-container" >
         <h2>{title}</h2>
-        <Buttons state={game} setState={setGame} list={Object.entries(spritesFinal[currentGame])} />
+        <Buttons state={game} setState={setGame} list={Object.keys(spritesFinal)} />
       </div>
       <div className="photos-container">
         {

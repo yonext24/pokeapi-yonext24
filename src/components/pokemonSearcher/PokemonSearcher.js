@@ -11,6 +11,9 @@ export default function PokemonSearcher () {
   }
   const handleSubmit = e => {
     e.preventDefault()
+    if (keyword === '') {
+      return
+    }
     navigate(`/pokemons/${keyword}`)
   }
   return <div className="input-container">
