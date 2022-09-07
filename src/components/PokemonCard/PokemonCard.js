@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 export default function PokemonCard({ photo, name, types = [] }) {
   const finalTypes = types.map((singleType) => singleType.type.name)
   const finalName = name.charAt(0).toUpperCase() + name.slice(1)
-  console.log(photo)
 
   return (
     <div key={name} className="pokemon-card">

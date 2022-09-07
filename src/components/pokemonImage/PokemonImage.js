@@ -1,4 +1,3 @@
-import './pokemonImage.css'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import fondopokemon from '../../images/fondopokemon.jfif'
@@ -98,6 +97,7 @@ const PokemonHeightFullDiv = styled.div`
     z-index: -1;
     `
 const PokemonHeightDiv = styled.div`
+    max-height: 400px;
     height: calc(0% + ${props => (props.height * 200) / 100}px);
     border-left: 3px solid white;
     position: absolute;

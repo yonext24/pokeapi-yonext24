@@ -1,7 +1,9 @@
 
-export const getPokemons = async (url = 'https://pokeapi.co/api/v2/pokemon') => {
+export const getPokemons = async (props) => {
+  const { url = 'https://pokeapi.co/api/v2/pokemon', page = 0 } = props
+  const link = page === 0 ? url : `https://pokeapi.co/api/v2/pokemon/?offset=${page*20}`
   try {
-    const data = await fetch(url)
+    const data = await fetch(link)
     const result = await data.json()
     return result
   } catch(err) {

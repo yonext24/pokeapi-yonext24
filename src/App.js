@@ -7,12 +7,14 @@ import PokemonSearcher from './components/pokemonSearcher/PokemonSearcher.js';
 import React from 'react';
 import NavBar from './components/navbar/NavBar';
 
+
 function App() {
   return (
     <div className="App">
         <Router>
           <NavBar />
           <PokemonSearcher />
+
           <Routes>
             <Route exact path='/pokemons/:pokemon' element={<PokemonPage />} />
             <Route exact path='/' element={<PageOfPokemons />} />

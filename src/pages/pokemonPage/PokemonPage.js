@@ -5,6 +5,7 @@ import PokemonCardPage from '../../components/pokemonCardPage/PokemonCardPage'
 import './pokemonPage.css'
 import PokemonImage from '../../components/pokemonImage/PokemonImage'
 import Error404 from '../error404/Error404'
+import NextPrevPokemon from '../../components/nextprevPokemon/NextPrevPokemon'
 
 // Agregar línea de peso y de altura
 // Agregar un map de base stats con imagenes como "hp", attack(espada) etc
@@ -17,7 +18,7 @@ export default function PokemonPage () {
   const { pokemon } = useParams()
 
   useEffect(() => {
-    getPokemons(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+    getPokemons({url: `https://pokeapi.co/api/v2/pokemon/${pokemon}`})
     .then(res => setPokemonData(res))
   }, [pokemon]) 
 
@@ -26,16 +27,21 @@ export default function PokemonPage () {
     return null
   }
   if (pokemonData === false) return <Error404 />
-  
-  const { sprites, name, height, weight } = pokemonData
+
+  const { sprites, name, height, weight, id } = pokemonData
   const { 'official-artwork' : photo_oficial } = sprites.other
   const { front_default } = photo_oficial
 
 
   return (
-  <div className='page-container'>
-    <PokemonImage photo_oficial={front_default} height={height} weight={weight} name={name} />
-    <PokemonCardPage sprites={sprites}/>
-  </div>
+  <>
+    <div className='buttons-container'>
+      <NextPrevPokemon id={id} />  
+    </div>
+    <div className='page-container'>
+      <PokemonImage photo_oficial={front_default} height={height} weight={weight} name={name} />
+      <PokemonCardPage sprites={sprites}/>
+    </div>
+  </>
   )
 }

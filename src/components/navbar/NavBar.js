@@ -10,7 +10,8 @@ const MyNavBar = styled.div`
   margin: 0;
   display: flex;
   justify-content: center;
-  background-color: #f55e00;
+  background-color: #ff8438;
+  margin-bottom: 30px;
   `
 const NavContainer = styled.div`
   width: 80%;
@@ -27,7 +28,7 @@ const GitButton = styled.button`
   justify-content: space-around;
   align-items: center;
   border-radius: 10px;
-  background-color: #f55e00;
+  background-color: #ff8438;
   border: 1px solid black;
   cursor: pointer;
   font-size: 1rem;
