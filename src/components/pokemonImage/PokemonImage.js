@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import fondopokemon from '../../images/fondopokemon.jfif'
 import PokemonStats from '../pokemonStats/PokemonStats'
+import WeightLine from '../weightline/WeightLine'
 
 const opacityAnimation = keyframes`
     from {
@@ -20,14 +21,7 @@ to {
   transform: scaleY(1);
 }
 `
-const weightAnimation= keyframes`
-from {
-  transform: scaleX(0);
-}
-to {
-  transform: scaleX(1);
-}
-`
+
 const PokemonName = styled.h2`
     color: white;
     font-size: 2.3rem;
@@ -44,13 +38,6 @@ const Height = styled.span`
     position: absolute;
     top: -10px;
     left: 5px;
-    width: max-content;
-  `
-const Weight = styled.span`
-    color: white;
-    position: absolute;
-    top: -20px;
-    right: -7px;
     width: max-content;
   `
 
@@ -106,35 +93,14 @@ const PokemonHeightDiv = styled.div`
     left: -3px;
     animation: ${heightAnimation} .3s;
   `
-const PokemonWeightDiv = styled.div`
-    width: ${props => props.weight / 10 < 600 ? props.weight / 10 : 600}px;
-    border-bottom: 3px solid white;
-    position: absolute;
-    bottom: 5px;
-    left: 45px;
-    animation: ${weightAnimation} .3s;
-  `
-const PokemonFullWeightDiv = styled.div`
-    width: 600px;
-    border-bottom: 3px solid grey;
-    position: absolute;
-    bottom: 5px;
-    left: 45px;
-    z-index: -1;
-  `
-const PokemonWeightPlus = styled.div`
-    width: 630px;
-    border-bottom: 3px solid red;
-    position: absolute;
-    bottom: 5px;
-    left: 45px;
-    z-index: -1;
-  `
+
+
+
 
 
 export default function PokemonImage({ photo_oficial, height, weight, name, stats }) {
   name = name.charAt(0).toUpperCase() + name.slice(1)
-
+  console.log(weight)
   return <>
     <PhotoContainer>
       <PokemonName>{name}</PokemonName>
@@ -147,11 +113,7 @@ export default function PokemonImage({ photo_oficial, height, weight, name, stat
           <Height>{height / 10} Metros</Height>
         </PokemonHeightDiv>
       </PokemonHeightFullDiv>
-      <PokemonFullWeightDiv />
-      {weight / 10 > 600 ? <PokemonWeightPlus><Weight>{weight / 10}k</Weight></PokemonWeightPlus> : null}
-      <PokemonWeightDiv weight={weight}>
-        {weight / 10 < 600 ? <Weight>{weight}k</Weight> : null}
-      </PokemonWeightDiv>
+    <WeightLine weight={weight} />
     </PhotoContainer>
   </>
 }
