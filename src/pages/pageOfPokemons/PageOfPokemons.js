@@ -16,14 +16,16 @@ export default function PageOfPokemons() {
 
   useEffect(() => {
     let query = new URLSearchParams(search)
-    let pageRaw = query.get('page') === null ? 0 : query.get('page')
+    let pageRaw = query.get('page') === null || parseInt(query.get('page')) < 0 || parseInt(query.get('page')) > 55 ? 0 : query.get('page')
     setPage(parseInt(pageRaw))
   },[search])
 
   const handleNextClick = () => {
+    if (page >= 56) return
     navigate(`/?page=${page+1}`)
   }
   const handlePrevClick = () => {
+    if (page <= 0) return
     navigate(`/?page=${page-1}`)
   }
   
@@ -39,7 +41,7 @@ export default function PageOfPokemons() {
   useEffect(() => {
     fetchPokemons()
       .then(res => setPokemons(res))
-  }, [page, search])
+  }, [page, search]) // eslint-disable-line
 
   if (parseInt(page) > 55) return <Error404 />
 

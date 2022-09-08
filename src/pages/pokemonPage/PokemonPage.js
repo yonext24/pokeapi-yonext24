@@ -28,7 +28,7 @@ export default function PokemonPage () {
   }
   if (pokemonData === false) return <Error404 />
 
-  const { sprites, name, height, weight, id } = pokemonData
+  const { sprites, name, height, weight, id, stats } = pokemonData
   const { 'official-artwork' : photo_oficial } = sprites.other
   const { front_default } = photo_oficial
 
@@ -39,7 +39,7 @@ export default function PokemonPage () {
       <NextPrevPokemon id={id} />  
     </div>
     <div className='page-container'>
-      <PokemonImage photo_oficial={front_default} height={height} weight={weight} name={name} />
+      <PokemonImage photo_oficial={front_default} height={height} weight={weight} name={name} stats={stats} />
       <PokemonCardPage sprites={sprites}/>
     </div>
   </>

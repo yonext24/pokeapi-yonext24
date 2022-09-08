@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import fondopokemon from '../../images/fondopokemon.jfif'
+import PokemonStats from '../pokemonStats/PokemonStats'
 
 const opacityAnimation = keyframes`
     from {
@@ -131,7 +132,7 @@ const PokemonWeightPlus = styled.div`
   `
 
 
-export default function PokemonImage({ photo_oficial, height, weight, name }) {
+export default function PokemonImage({ photo_oficial, height, weight, name, stats }) {
   name = name.charAt(0).toUpperCase() + name.slice(1)
 
   return <>
@@ -140,6 +141,7 @@ export default function PokemonImage({ photo_oficial, height, weight, name }) {
       <PhotoAnimation>
         <PokemonImg src={photo_oficial} />
       </PhotoAnimation>
+      <PokemonStats stats={stats} ></PokemonStats>
       <PokemonHeightFullDiv>
         <PokemonHeightDiv height={height}>
           <Height>{height / 10} Metros</Height>
