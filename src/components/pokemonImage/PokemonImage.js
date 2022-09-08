@@ -73,7 +73,7 @@ const PhotoContainer = styled.div`
     align-items: center;
     margin: auto;
     flex-direction: column;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     
     &::after {
       content: '';

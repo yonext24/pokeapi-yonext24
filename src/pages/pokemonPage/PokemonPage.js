@@ -13,14 +13,15 @@ import NextPrevPokemon from '../../components/nextprevPokemon/NextPrevPokemon'
 // Agregar la navbar con imágen de pokedex
 // Agregar habilidades
 
-export default function PokemonPage () {
+
+export default function PokemonPage() {
   const [pokemonData, setPokemonData] = useState(null)
   const { pokemon } = useParams()
 
   useEffect(() => {
-    getPokemons({url: `https://pokeapi.co/api/v2/pokemon/${pokemon}`})
-    .then(res => setPokemonData(res))
-  }, [pokemon]) 
+    getPokemons({ url: `https://pokeapi.co/api/v2/pokemon/${pokemon}` })
+      .then(res => setPokemonData(res))
+  }, [pokemon])
 
 
   if (pokemonData === null || pokemonData.ok === false) {
@@ -28,20 +29,28 @@ export default function PokemonPage () {
   }
   if (pokemonData === false) return <Error404 />
 
-  const { sprites, name, height, weight, id, stats } = pokemonData
-  const { 'official-artwork' : photo_oficial } = sprites.other
+  const { sprites, name, height, weight, id, stats, types } = pokemonData
+  const { 'official-artwork': photo_oficial } = sprites.other
   const { front_default } = photo_oficial
 
 
   return (
-  <>
-    <div className='buttons-container'>
-      <NextPrevPokemon id={id} />  
-    </div>
-    <div className='page-container'>
-      <PokemonImage photo_oficial={front_default} height={height} weight={weight} name={name} stats={stats} />
-      <PokemonCardPage sprites={sprites}/>
-    </div>
-  </>
+    <>
+      <div className='buttons-container'>
+        <NextPrevPokemon id={id} />
+      </div>
+      <div className='page-container'>
+        <PokemonImage photo_oficial={front_default} height={height} weight={weight} name={name} stats={stats} />
+        <div className='types-container'>
+          {
+            types.map(type => {
+              const finalType = type.type.name
+              return <div className='type' key={finalType}>{finalType}</div>
+            })
+          }
+        </div>
+        <PokemonCardPage sprites={sprites} />
+      </div>
+    </>
   )
 }

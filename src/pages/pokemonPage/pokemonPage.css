@@ -9,3 +9,20 @@
   display: flex;
   justify-content: space-between;
 }
+.types-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 40px;
+}
+.type {
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: .14rem;
+  border: 1px solid gray;
+  padding: 5px 15px;
+}
