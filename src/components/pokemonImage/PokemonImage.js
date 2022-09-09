@@ -28,6 +28,10 @@ const PokemonImg = styled.img`
     width: 250px;
     height: 250px;
   }
+  @media (max-width: 415px) {
+    width: 200px;
+    height: 200px;
+  }
   
   `
 
