@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import fondopokemon from '../../images/fondopokemon.jfif'
+import HeightLine from '../HeightLine/HeightLine'
 import PokemonStats from '../pokemonStats/PokemonStats'
 import WeightLine from '../weightline/WeightLine'
 
@@ -13,14 +14,6 @@ const opacityAnimation = keyframes`
       opacity: 1;
     }
   `
-const heightAnimation= keyframes`
-from {
-  transform: scaleY(0);
-}
-to {
-  transform: scaleY(1);
-}
-`
 
 const PokemonName = styled.h2`
     color: white;
@@ -29,17 +22,15 @@ const PokemonName = styled.h2`
   `
 
 const PokemonImg = styled.img`
-    width: 50%;
-    height: 50%;
+  width: 50%;
+  height: 50%;
+  @media (max-width: 700px) {
+    width: 250px;
+    height: 250px;
+  }
+  
   `
 
-const Height = styled.span`
-    color: white;
-    position: absolute;
-    top: -10px;
-    left: 5px;
-    width: max-content;
-  `
 
 const PhotoAnimation = styled.div`
 width: 100%;
@@ -48,54 +39,41 @@ display: flex;
 justify-content: center;
 align-items: center;
 animation: ${opacityAnimation} .5s;
+@media (max-width: 450px) {
+    justify-content: flex-start;
+  }
 `
 const PhotoContainer = styled.div`
-    min-height: 500px;
-    min-width: 500px;
-    height: 100%;
-    width: 90%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    flex-direction: column;
-    margin-bottom: 10px;
+  height: 100%;
+  width: 90%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  flex-direction: column;
+  margin-bottom: 10px;
     
-    &::after {
-      content: '';
-      background-image: url(${fondopokemon});
-      background-size: cover, contain;
-      position: absolute;
-      width: -webkit-fill-available;
-      height: -webkit-fill-available;
-      filter: brightness(30%);
-      top: 0%;
-      left: 0;
-      z-index: -100;
-      border-radius: 20px;
-    }
-  `
-const PokemonHeightFullDiv = styled.div`
-    height: 400px;
-    border-left: 3px solid grey;
+  &::after {
+    content: '';
+    background-image: url(${fondopokemon});
+    background-size: cover, contain;
     position: absolute;
-    left: 5px;
-    bottom: 45px;
-    z-index: -1;
-    `
-const PokemonHeightDiv = styled.div`
-    max-height: 400px;
-    height: calc(0% + ${props => (props.height * 200) / 100}px);
-    border-left: 3px solid white;
-    position: absolute;
-    bottom: 0;
-    left: -3px;
-    animation: ${heightAnimation} .3s;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    filter: brightness(30%);
+    top: 0%;
+    left: 0;
+    z-index: -100;
+    border-radius: 20px;
+  }
+  @media (max-width: 995px) {
+    width: 100%;
+  }
+    @media (max-width: 700px) {
+    height: 600px;
+  }
   `
-
-
-
 
 
 export default function PokemonImage({ photo_oficial, height, weight, name, stats }) {
@@ -108,12 +86,8 @@ export default function PokemonImage({ photo_oficial, height, weight, name, stat
         <PokemonImg src={photo_oficial} />
       </PhotoAnimation>
       <PokemonStats stats={stats} ></PokemonStats>
-      <PokemonHeightFullDiv>
-        <PokemonHeightDiv height={height}>
-          <Height>{height / 10} Metros</Height>
-        </PokemonHeightDiv>
-      </PokemonHeightFullDiv>
-    <WeightLine weight={weight} />
+      <HeightLine height={height} />
+      <WeightLine weight={weight} />
     </PhotoContainer>
   </>
 }

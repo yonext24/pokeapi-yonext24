@@ -10,10 +10,12 @@ const MyNavBar = styled.div`
   margin: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #ff8438;
   margin-bottom: 30px;
   `
 const NavContainer = styled.div`
+  background-color: #ff8438;
   width: 80%;
   height: 100%;
   display: flex;

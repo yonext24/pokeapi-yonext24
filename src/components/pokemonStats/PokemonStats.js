@@ -9,20 +9,40 @@ import special_attack from '../../images/special_attack.svg'
 import special_defense from '../../images/special_defense.svg'
 
 const MyContainer = styled.div`
+  height: 90%;
   display: flex;
-  flex-flow: column wrap;
+  width: 10%;
+  flex-flow: row wrap;
+  align-content: space-around;
+  justify-content: center;
   position: absolute;
   right: 0;
-  top: 0;
+  top: 10px;
+  @media (max-width: 1055px) {
+    width: 15%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    right: 20px;
+  }
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    right: 3px;
+  }
 `
 const Span = styled.span`
+  width: 100%;
   color: white;
   font-size: 1rem;
   text-align: center;
+  @media (max-width: 1055px) {
+    grid-column: 1/3;
+  }
 `
 const Stat = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,9 +55,13 @@ const Stat = styled.div`
     height: inherit;
     width: inherit;
     background-image: url(${props => props.image});
-    background-size: contain; 
+    background-size: contain;
+    background-repeat: no-repeat ;
     filter: invert(40%);
     z-index: -1;
+  }
+  @media (max-width: 750px) {
+    font-size: 1rem
   }
 `
 
