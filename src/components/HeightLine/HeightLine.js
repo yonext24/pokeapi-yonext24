@@ -30,6 +30,7 @@ const PokemonHeightDiv = styled.div`
     bottom: 0;
     left: -3px;
     animation: ${heightAnimation} .3s;
+    transition: height .3s;
   `
 
 export default function HeightLine({ height }) {

@@ -3,8 +3,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const MyGengar = styled.img`
-  width: 50%;
-  height: 50%;
+  width: 210px;
+  height: 210px;
 `
 const MyContainer = styled.div`
   display: flex;
@@ -12,6 +12,7 @@ const MyContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
+  height: 75vh;
 `
 
 export default function Error404 () {

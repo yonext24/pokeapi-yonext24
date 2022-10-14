@@ -7,13 +7,6 @@ import PokemonImage from '../../components/pokemonImage/PokemonImage'
 import Error404 from '../error404/Error404'
 import NextPrevPokemon from '../../components/nextprevPokemon/NextPrevPokemon'
 
-// Agregar línea de peso y de altura
-// Agregar un map de base stats con imagenes como "hp", attack(espada) etc
-// Agregar los tipos
-// Agregar la navbar con imágen de pokedex
-// Agregar habilidades
-
-
 export default function PokemonPage() {
   const [pokemonData, setPokemonData] = useState(null)
   const { pokemon } = useParams()
@@ -25,7 +18,7 @@ export default function PokemonPage() {
 
 
   if (pokemonData === null || pokemonData.ok === false) {
-    return null
+    return <div className='loading'></div>
   }
   if (pokemonData === false) return <Error404 />
 
@@ -45,7 +38,7 @@ export default function PokemonPage() {
           {
             types.map(type => {
               const finalType = type.type.name
-              return <div className='type' key={finalType}>{finalType}</div>
+              return <div className={`type ${finalType}`} key={finalType}>{finalType}</div>
             })
           }
         </div>

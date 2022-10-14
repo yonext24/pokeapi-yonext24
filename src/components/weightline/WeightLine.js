@@ -22,6 +22,7 @@ const PokemonWeightDiv = styled.div`
     border-bottom: 3px solid white;
     position: absolute;
     animation: ${weightAnimation} .3s;
+    transition: width .3s;
   `
 const PokemonFullWeightDiv = styled.div`
     width: 80%;

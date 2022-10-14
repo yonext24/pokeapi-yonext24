@@ -7,18 +7,20 @@ export default function PokemonCard({ photo, name, types = [] }) {
   const finalName = name.charAt(0).toUpperCase() + name.slice(1)
 
   return (
-    <div key={name} className="pokemon-card">
-      <div className='image-container'>
-        <img className="card-photo" src={photo} alt="pokemon" ></img>
+    <Link to={'/pokemons/' + name}>
+      <div key={name} className={`pokemon-card${' ' + finalTypes[0]} ${finalTypes[1] ? finalTypes[1] : ''}`}>
+        <div className='image-container'>
+          <img className="card-photo" src={photo} alt="pokemon" ></img>
+        </div>
+        <div className='name-types-container'>
+          <h2 className="card-name">{finalName}</h2>
+          <div className="type-container">
+            {
+              finalTypes.map((singleType) => <div key={singleType}>{singleType}</div>)
+            }
+          </div>
+        </div>
       </div>
-      <Link to={'/pokemons/' + name}>
-        <h2 className="card-name">{finalName}</h2>
-      </Link>
-      <div className="type-container">
-        {
-          finalTypes.map((singleType) => <div key={singleType} className={singleType}>{singleType}</div>)
-        }
-      </div>
-    </div>
+    </Link>
   )
 }

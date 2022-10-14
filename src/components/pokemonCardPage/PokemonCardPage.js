@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import Buttons from "../buttons/Buttons";
+import SinglePokemonCardPage from "../singlePokemonCardPage/SinglePokemonCardPage";
 import "./pokemonCardPage.css"
 
 export default function PokemonCardPage({ sprites }) {
   const [game, setGame] = useState(0)
-  const [image, setImage] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setGame(0)
-    setImage(0)
   }, [sprites])
+
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 100)
+  }, [game])
 
   const hasShiny = sprites.front_shiny ? true : false
   const shinyPhotos = hasShiny ? [{ front_shiny: sprites.front_shiny }, { back_shiny: sprites.back_shiny }] : []
@@ -87,14 +94,11 @@ export default function PokemonCardPage({ sprites }) {
         <h2>{title}</h2>
         <Buttons state={game} setState={setGame} list={Object.keys(spritesFinal)} />
       </div>
-      <div className="photos-container">
+      <div className={`photos-container${loading ? '' : ' visible'}`}>
         {
           images.map(type => {
             return (
-              <div className="photo" key={type[image][0][0]}>
-                <img alt="pokemon" src={type[image][0][1]}></img>
-                <Buttons state={image} setState={setImage} list={type[image][0]} />
-              </div>
+              <SinglePokemonCardPage type={type} />
             )
           })
         }

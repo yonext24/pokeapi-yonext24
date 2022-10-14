@@ -6,6 +6,7 @@ import Error404 from './pages/error404/Error404';
 import PokemonSearcher from './components/pokemonSearcher/PokemonSearcher.js';
 import React from 'react';
 import NavBar from './components/navbar/NavBar';
+import Footer from './components/footer/Footer';
 
 
 function App() {
@@ -14,13 +15,13 @@ function App() {
         <Router>
           <NavBar />
           <PokemonSearcher />
-
           <Routes>
             <Route exact path='/pokemons/:pokemon' element={<PokemonPage />} />
             <Route exact path='/' element={<PageOfPokemons />} />
             <Route path='*' element={<Error404 />}/>
           </Routes>
         </Router>
+        <Footer />
     </div>
   );
 }

@@ -1,0 +1,13 @@
+footer {
+  height: 6rem;
+  width: 100%;
+  background-color: var(--orange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  float: inline-end;
+}
+footer span {
+  margin-top: 3rem;
+}

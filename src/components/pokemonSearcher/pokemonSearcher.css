@@ -21,10 +21,10 @@ form input {
 }
 form button {
   padding: 14px 15px;
-  background-color: #ff8438;
-  border: #ff8438;
+  background-color: var(--blue);
+  border: none;
   cursor: pointer;
-  color: black;
+  color: var(--cuarzo);
   font-size: 1rem;
   font-weight: bold;
   border-radius: 10px;

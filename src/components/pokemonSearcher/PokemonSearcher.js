@@ -14,7 +14,8 @@ export default function PokemonSearcher () {
     if (keyword === '') {
       return
     }
-    navigate(`/pokemons/${keyword}`)
+    const finalKeyword = keyword.toLowerCase()
+    navigate(`/pokemons/${finalKeyword}`)
   }
   return <div className="input-container">
     <form onSubmit={handleSubmit}>

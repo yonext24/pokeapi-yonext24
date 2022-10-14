@@ -11,11 +11,11 @@ const MyNavBar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ff8438;
+  background-color: var(--orange);
   margin-bottom: 30px;
   `
 const NavContainer = styled.div`
-  background-color: #ff8438;
+  background-color: var(--orange);
   width: 80%;
   height: 100%;
   display: flex;
@@ -30,21 +30,23 @@ const GitButton = styled.button`
   justify-content: space-around;
   align-items: center;
   border-radius: 10px;
-  background-color: #ff8438;
-  border: 1px solid black;
+  background-color: var(--blue);
+  border: none;
   cursor: pointer;
+  color: white;
   font-size: 1rem;
   font-weight: bold;
-  transition: all .3s ease-out;
+  transition: all .2s ease-in-out;
 
   &:hover {
-
     background-color: black;
-    color: white;
     img {
       filter: invert(100%);
     }
     a {
+      text-decoration: none;
+    }
+    a:hover {
       text-decoration: none;
     }
   }

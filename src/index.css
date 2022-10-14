@@ -1,7 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700&display=swap');
+
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
 }
+:root {
+  --cuarzo: #F4F4F6;
+  --orange: #F86624;
+  --blue: #003F7D;
+}
+
 body {
   overflow-x: hidden;
   margin: 0;
@@ -10,6 +19,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--cuarzo) ;
 }
 
 code {
