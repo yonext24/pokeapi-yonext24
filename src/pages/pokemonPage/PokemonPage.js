@@ -18,7 +18,9 @@ export default function PokemonPage() {
 
 
   if (pokemonData === null || pokemonData.ok === false) {
-    return <div className='loading'></div>
+    return <div className='loading'>
+      <div className='spinner'></div>
+    </div>
   }
   if (pokemonData === false) return <Error404 />
 
@@ -33,7 +35,10 @@ export default function PokemonPage() {
         <NextPrevPokemon id={id} />
       </div>
       <div className='page-container'>
-        <PokemonImage photo_oficial={front_default} height={height} weight={weight} name={name} stats={stats} />
+        <PokemonImage photo_oficial={front_default}
+          height={height}
+          weight={weight}
+          name={name} stats={stats} />
         <div className='types-container'>
           {
             types.map(type => {

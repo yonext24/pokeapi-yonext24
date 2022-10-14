@@ -98,7 +98,7 @@ export default function PokemonCardPage({ sprites }) {
         {
           images.map(type => {
             return (
-              <SinglePokemonCardPage type={type} />
+              <SinglePokemonCardPage type={type} key={type[0][0][1]} />
             )
           })
         }

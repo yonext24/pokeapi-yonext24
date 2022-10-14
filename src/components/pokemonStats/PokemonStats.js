@@ -81,7 +81,6 @@ export default function PokemonStats ({ stats }) {
   const orderedStats = stats.map(singleStat => {
     return [singleStat.stat.name, singleStat.base_stat]
   })
-  console.log(orderedStats)
   return <MyContainer>
     <Span>Base <br/> Stats</Span>
     {

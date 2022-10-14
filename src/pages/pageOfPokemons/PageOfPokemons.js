@@ -12,29 +12,33 @@ export default function PageOfPokemons() {
   const { search } = useLocation()
   const [pokemons, setPokemons] = useState([])
   const [page, setPage] = useState(0)
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
     let query = new URLSearchParams(search)
     let pageRaw = query.get('page') === null || parseInt(query.get('page')) < 0 || parseInt(query.get('page')) > 55 ? 0 : query.get('page')
     setPage(parseInt(pageRaw))
-  },[search])
+  }, [search])
 
   const handleNextClick = () => {
     if (page >= 56) return
-    navigate(`/?page=${page+1}`)
+    navigate(`/?page=${page + 1}`)
   }
   const handlePrevClick = () => {
     if (page <= 0) return
-    navigate(`/?page=${page-1}`)
+    navigate(`/?page=${page - 1}`)
   }
-  
+
   const fetchPokemons = async () => {
+    setLoading(true)
     try {
       const data = await getPokemonsDetail(page)
+      setLoading(false)
       return data
     }
     catch (err) {
+      setLoading(false)
       return <Error404 />
     }
   }
@@ -60,13 +64,16 @@ export default function PageOfPokemons() {
         </button>
       </div>
     </div>
-    <div className="container">
-      {
-        pokemons.map((pokemon) => {
-          const { 'official-artwork': sprite } = pokemon.sprites.other
-          return <PokemonCard key={pokemon.name} photo={sprite.front_default} name={pokemon.name} types={pokemon.types} />
-        })
-      }
-    </div>
+    {!loading ?
+      <div className="container">
+        {
+          pokemons.map((pokemon) => {
+            const { 'official-artwork': sprite } = pokemon.sprites.other
+            return <PokemonCard key={pokemon.name} photo={sprite.front_default} name={pokemon.name} types={pokemon.types} />
+          })
+        }
+      </div>
+      : <div className="spinner"></div>
+    }
   </>
 }

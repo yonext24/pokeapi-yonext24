@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import fondopokemon from '../../images/fondopokemon.jfif'
+import fondopokemon from '../../images/fondopokemon.avif'
 import HeightLine from '../HeightLine/HeightLine'
 import PokemonStats from '../pokemonStats/PokemonStats'
 import WeightLine from '../weightline/WeightLine'
@@ -24,6 +24,8 @@ const PokemonName = styled.h2`
 const PokemonImg = styled.img`
   width: 50%;
   height: 50%;
+  transition: all .2s;
+  
   @media (max-width: 700px) {
     width: 250px;
     height: 250px;
@@ -82,12 +84,28 @@ const PhotoContainer = styled.div`
 
 export default function PokemonImage({ photo_oficial, height, weight, name, stats }) {
   name = name.charAt(0).toUpperCase() + name.slice(1)
-  console.log(weight)
+  const [loaded, setLoaded] = useState(false)
+  const [newImageLoading, setNewImageLoading] = useState(false)
+
+  useEffect(() => {
+    console.log('triggered')
+    setNewImageLoading(true)
+  }, [photo_oficial])
+
+
   return <>
-    <PhotoContainer>
+    <PhotoContainer style={loaded ? {} : { display: 'none' }} onLoad={() => setLoaded(true)}>
       <PokemonName>{name}</PokemonName>
       <PhotoAnimation>
-        <PokemonImg src={photo_oficial} />
+        <PokemonImg src={photo_oficial} 
+        style={newImageLoading 
+          ? { transform: 'translateY(20%)', opacity: 0 } 
+          : {} }
+        onLoad={() => {
+          setTimeout(() => {
+            setNewImageLoading(false)
+          }, 600)
+        }} />
       </PhotoAnimation>
       <PokemonStats stats={stats} ></PokemonStats>
       <HeightLine height={height} />
