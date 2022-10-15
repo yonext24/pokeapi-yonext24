@@ -110,6 +110,12 @@ a:hover {
 .ghost > .name-types-container > a > h2 {
   color: var(--cuarzo)!important;
 }
+.dragon > .name-types-container > a > h2 {
+  color: var(--cuarzo)!important;
+}
+.dragon {
+  color: var(--cuarzo)!important;
+}
 .normal {
   background-color: #788475;
 }

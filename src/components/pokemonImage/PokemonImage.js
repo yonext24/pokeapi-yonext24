@@ -14,11 +14,17 @@ const opacityAnimation = keyframes`
       opacity: 1;
     }
   `
+  const NameContainer = styled.div`
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  `
 
 const PokemonName = styled.h2`
     color: white;
     font-size: 2.3rem;
-    justify-self: flex-start;
   `
 
 const PokemonImg = styled.img`
@@ -92,6 +98,9 @@ const PhotoContainer = styled.div`
     flex-direction: column;
    }
   `
+  const Spacing = styled.div`
+  height: 80px;
+  `
 
 export default function PokemonImage({ photo_oficial, height, weight, name, stats }) {
   name = name.charAt(0).toUpperCase() + name.slice(1)
@@ -99,7 +108,10 @@ export default function PokemonImage({ photo_oficial, height, weight, name, stat
 
   return <>
     <PhotoContainer >
-      <PokemonName>{name}</PokemonName>
+      <Spacing></Spacing>
+      <NameContainer>
+        <PokemonName>{name}</PokemonName>
+      </NameContainer>
       <PhotoAnimation>
         <PokemonImg src={photo_oficial} loaded={loaded} onLoad={() => setLoaded(true)} />
         {

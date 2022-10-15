@@ -4,7 +4,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 10px;
-  min-height: 800px;
+  min-height: 80vh;
+}
+.has-height {
+  min-height: auto!important;
+}
+.height-holder {
+  height: 70vh;
 }
 .pages-buttons {
   width: 75%;

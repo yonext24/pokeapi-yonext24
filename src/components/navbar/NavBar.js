@@ -55,7 +55,7 @@ const GitButton = styled.button`
   }
 `
 
-const NavLink = styled(Link)`
+const NavLink = styled.a`
   height: 100%;
   display: flex;
   justify-content: center;
@@ -69,7 +69,7 @@ const MyLogo = styled.img`
 export default function NavBar() {
   return <MyNavBar>
     <NavContainer>
-      <NavLink to='/' >
+      <NavLink href='/' >
         <MyLogo src={Pokédex_logo} alt='home' />
       </NavLink>
       <a href='https://github.com/yonext24/pokeapi-yonext24' target='_blank' rel='noreferrer'>
