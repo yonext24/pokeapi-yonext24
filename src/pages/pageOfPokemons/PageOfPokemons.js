@@ -73,7 +73,9 @@ export default function PageOfPokemons() {
           })
         }
       </div>
-      : <div className="spinner"></div>
+      : <div className='loading'>
+          <div className="spinner"></div>
+        </div>
     }
   </>
 }

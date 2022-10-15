@@ -8,7 +8,7 @@ export default function PokemonCard({ photo, name, types = [] }) {
 
   return (
     <Link to={'/pokemons/' + name}>
-      <div key={name} className={`pokemon-card${' ' + finalTypes[0]} ${finalTypes[1] ? finalTypes[1] : ''}`}>
+      <div key={name} className={`pokemon-card${' ' + finalTypes[0]}`}>
         <div className='image-container'>
           <img className="card-photo" src={photo} alt="pokemon" ></img>
         </div>

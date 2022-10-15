@@ -44,3 +44,15 @@
   border: 1px solid gray;
   padding: 5px 15px;
 }
+.ground {
+  color: var(--cuarzo)!important;
+}
+.ghost {
+  color: var(--cuarzo)!important;
+}
+.poison {
+  color: var(--cuarzo)!important;
+}
+.dark {
+  color: var(--cuarzo)!important;
+}

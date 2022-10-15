@@ -27,8 +27,13 @@ const MyContainer = styled.div`
   @media (max-width: 700px) {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     right: 3px;
+    align-content: space-evenly;
+  }
+  @media (max-width: 550px) {
+    flex-direction: row;
+    position: static;
+    width: 85%;
   }
 `
 const Span = styled.span`

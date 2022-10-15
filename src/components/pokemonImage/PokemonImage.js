@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import fondopokemon from '../../images/fondopokemon.avif'
 import HeightLine from '../HeightLine/HeightLine'
@@ -25,17 +25,28 @@ const PokemonImg = styled.img`
   width: 50%;
   height: 50%;
   transition: all .2s;
+  opacity: ${props => props.loaded ? 1 : 0};
   
   @media (max-width: 700px) {
     width: 250px;
     height: 250px;
   }
-  @media (max-width: 415px) {
-    width: 200px;
-    height: 200px;
+  @media (max-width: 550px) {
+    margin-left: .9rem;
   }
+`
+const Holder = styled.div`
+  width: 50%;
+  height: 50%;
   
-  `
+  @media (max-width: 700px) {
+    width: 250px;
+    height: 250px;
+  }
+  @media (max-width: 550px) {
+    margin-left: .9rem;
+  }
+`
 
 
 const PhotoAnimation = styled.div`
@@ -45,9 +56,6 @@ display: flex;
 justify-content: center;
 align-items: center;
 animation: ${opacityAnimation} .5s;
-@media (max-width: 450px) {
-    justify-content: flex-start;
-  }
 `
 const PhotoContainer = styled.div`
   height: 100%;
@@ -55,6 +63,7 @@ const PhotoContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  min-height: 450px;
   align-items: center;
   margin: auto;
   flex-direction: column;
@@ -79,33 +88,23 @@ const PhotoContainer = styled.div`
     @media (max-width: 700px) {
     height: 600px;
   }
+   @media (max-width: 550px) {
+    flex-direction: column;
+   }
   `
-
 
 export default function PokemonImage({ photo_oficial, height, weight, name, stats }) {
   name = name.charAt(0).toUpperCase() + name.slice(1)
   const [loaded, setLoaded] = useState(false)
-  const [newImageLoading, setNewImageLoading] = useState(false)
-
-  useEffect(() => {
-    console.log('triggered')
-    setNewImageLoading(true)
-  }, [photo_oficial])
-
 
   return <>
-    <PhotoContainer style={loaded ? {} : { display: 'none' }} onLoad={() => setLoaded(true)}>
+    <PhotoContainer >
       <PokemonName>{name}</PokemonName>
       <PhotoAnimation>
-        <PokemonImg src={photo_oficial} 
-        style={newImageLoading 
-          ? { transform: 'translateY(20%)', opacity: 0 } 
-          : {} }
-        onLoad={() => {
-          setTimeout(() => {
-            setNewImageLoading(false)
-          }, 600)
-        }} />
+        <PokemonImg src={photo_oficial} loaded={loaded} onLoad={() => setLoaded(true)} />
+        {
+          !loaded && <Holder />
+        }
       </PhotoAnimation>
       <PokemonStats stats={stats} ></PokemonStats>
       <HeightLine height={height} />

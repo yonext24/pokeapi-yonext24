@@ -36,7 +36,7 @@ const PokemonHeightDiv = styled.div`
 export default function HeightLine({ height }) {
   return <PokemonHeightFullDiv>
     <PokemonHeightDiv height={height}>
-      <Height>{height / 10} Metros</Height>
+      <Height>{height / 10} M</Height>
     </PokemonHeightDiv>
   </PokemonHeightFullDiv>
 }

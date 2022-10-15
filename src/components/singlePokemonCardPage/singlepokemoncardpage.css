@@ -1,0 +1,19 @@
+.hidden {
+  display: none;
+}
+.mini-spinner {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 5px solid;
+  border-color: #dbdcef;
+  border-right-color: #ffbc47;
+  animation: spinner-d3wgkg 1s infinite linear;
+}
+.card-image-loading {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
